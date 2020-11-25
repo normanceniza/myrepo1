@@ -1,0 +1,63 @@
+//This will create a storedprocedure without parameter
+
+
+first input this in the sql statement query
+
+	select * 
+	from employee as e,siblings as s
+	where e.code = s.code
+	
+Second if the query above is successful then
+add the code below
+	
+	create procedure employeeSiblings
+	as
+	select * 
+	from employee as e,siblings as s
+	where e.code = s.code
+
+	exec employeesiblings
+-------------------------------------------------------
+
+//This will create a storedprocedure with parameter
+
+first input this in the sql statement query
+
+	select * 
+	from employee as e,siblings as s
+	where e.code = s.code
+
+Second if the query above is successful then
+add the code below
+	
+	
+	create procedure employeeSiblings(@cd char(6))
+	as
+	select *
+	from employee as e,siblings as s
+	where e.code = @cd
+	go
+	
+	exec employeesiblings 000001 //TO test the storedprocedure
+
+Third Example
+
+USE ieFastrak
+GO
+
+CREATE PROCEDURE  TblEmployee @City nvarchar(30)
+AS
+SELECT * 
+FROM Person.Address
+WHERE City = @City
+GO
+
+------------
+select * from Shipment
+where Shipment.ShipmentTypeId = 15
+
+select * from BillingTransmittal
+
+select *
+from BillingTransmittal as b,Shipment as s,Customer as c
+where 
